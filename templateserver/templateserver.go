@@ -59,7 +59,12 @@ func (s server) Render(ctx context.Context, request *pb.RenderRequest) (*pb.Rend
 		return nil, errInternal
 	}
 	var content bytes.Buffer
-	if err = s.templates[request.TemplateName].Execute(&content, data); err != nil {
+	template, ok := s.templates[request.TemplateName]
+	if !ok {
+		logger.Error("Template not found")
+		return nil, errInternal
+	}
+	if err = template.Execute(&content, data); err != nil {
 		logger.Error("Failed during indentlang template call", zap.Error(err))
 		return nil, errInternal
 	}
