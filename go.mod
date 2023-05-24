@@ -3,7 +3,7 @@ module github.com/dvaumoron/puzzleindentlangserver
 go 1.20
 
 require (
-	github.com/dvaumoron/indentlang v1.5.1
+	github.com/dvaumoron/indentlang v1.5.2
 	github.com/dvaumoron/puzzlegrpcserver v1.4.0
 	github.com/dvaumoron/puzzletemplateservice v1.0.0
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.2.0

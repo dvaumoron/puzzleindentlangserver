@@ -57,8 +57,8 @@ github.com/cncf/xds/go v0.0.0-20210922020428-25de7278fc84/go.mod h1:eXthEFrGJvWH
 github.com/cncf/xds/go v0.0.0-20211011173535-cb28da3451f1/go.mod h1:eXthEFrGJvWHgFFCl3hGmgk+/aYT6PnTQLykKQRLhEs=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
-github.com/dvaumoron/indentlang v1.5.1 h1:7VtfTtE55wxYUxOnSYwD/rOqJd1BbTdkLUBCHLVFtps=
-github.com/dvaumoron/indentlang v1.5.1/go.mod h1:HTnwtx1Qg9BpqQ5fP10cp0tA4h8AXJ6JO6C0dncFpDA=
+github.com/dvaumoron/indentlang v1.5.2 h1:u9Nx4fkJtYexIrjYe72LyopIZeyvtQfXpbetNHG4iwM=
+github.com/dvaumoron/indentlang v1.5.2/go.mod h1:HTnwtx1Qg9BpqQ5fP10cp0tA4h8AXJ6JO6C0dncFpDA=
 github.com/dvaumoron/puzzlegrpcserver v1.4.0 h1:1cFzh/P241Yfp2fJb/4p8gibeNNb5eMkm5XhDvgQNIE=
 github.com/dvaumoron/puzzlegrpcserver v1.4.0/go.mod h1:NxF1n4rDAhJ9q2idDMC8HKRwf8fR1GtqJ6DG4of5EMk=
 github.com/dvaumoron/puzzletelemetry v1.1.0 h1:1KMOKBadHZ1vShpaXzF0fuP8B8GCm/jI2VFU3hELuys=
