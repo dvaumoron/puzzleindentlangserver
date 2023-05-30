@@ -11,7 +11,7 @@ Import "main"
             div
                 := imageId (. Image ImageId)  
                 := imageDesc (. Image Desc)
-                img @src=CurrentUrl:"retrieve/":imageId @alt=imageDesc @width=100
+                img @src=CurrentUrl:"retrieve/":imageId @alt=imageDesc
 
             form @action=BaseUrl:"save" @method="POST" @enctype="multipart/form-data"
                 div @class="hide"
