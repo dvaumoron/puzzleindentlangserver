@@ -5,7 +5,7 @@ Import "main"
         List
             paginate PreviousPageNumber NextPageNumber ""
 
-            If (!= Id 0)
+            If Id
                 p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
 
             := editLinkLabel (. Messages EditLinkLabel)
