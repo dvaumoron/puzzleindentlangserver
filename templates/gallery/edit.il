@@ -5,7 +5,9 @@ Import "main"
         List
             h2
                 := imageTitle (. Image Title)
-                (. Messages EditLabel) " " imageTitle " "
+                If (== imageTitle "new")
+                    (. Messages NewImageLabel) " "
+                    (. Messages EditLabel) " " imageTitle " "
                 a @href=BaseUrl @role="button" (. Messages CancelLinkLabel)
 
             div
@@ -15,6 +17,8 @@ Import "main"
 
             form @action=BaseUrl:"save" @method="POST" @enctype="multipart/form-data"
                 div @class="hide"
+                    # to allow JavaScript or WebAssembly to display a localized error message
+                    span @id="errorBadImageTitleMessage" (. Messages ErrorBadImageTitle)
                     input @type="text" @name="fileList" @value="image"
                     input @type="text" @name="formData[ImageId]" @value=imageId
                 label

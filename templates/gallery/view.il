@@ -5,6 +5,8 @@ Import "main"
         List
             paginate PreviousPageNumber NextPageNumber ""
 
+            p (a @href=CurrentUrl:"create" @class="secondary" @role="button" (. Messages NewLinkLabel))
+
             := editLinkLabel (. Messages EditLinkLabel)
             For image Images
                 article
