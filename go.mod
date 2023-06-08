@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/dvaumoron/indentlang v1.5.2
-	github.com/dvaumoron/puzzlegrpcserver v1.4.0
+	github.com/dvaumoron/puzzlegrpcserver v1.4.1
 	github.com/dvaumoron/puzzletemplateservice v1.0.0
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.2.0
 	go.uber.org/zap v1.24.0
@@ -12,7 +12,7 @@ require (
 
 require (
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
-	github.com/dvaumoron/puzzletelemetry v1.1.0 // indirect
+	github.com/dvaumoron/puzzletelemetry v1.1.1 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
