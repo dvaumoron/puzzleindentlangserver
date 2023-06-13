@@ -39,15 +39,16 @@ var errInternal = errors.New("internal service error")
 type server struct {
 	pb.UnimplementedTemplateServer
 	templates map[string]template.Template
+	messages  map[string]map[string]string
 	logger    *otelzap.Logger
 }
 
-func New(templatesPath string, logger *otelzap.Logger) pb.TemplateServer {
+func New(templatesPath string, messages map[string]map[string]string, logger *otelzap.Logger) pb.TemplateServer {
 	templates, err := adapter.LoadTemplates(templatesPath)
 	if err != nil {
 		logger.Fatal("Failed to load templates", zap.Error(err))
 	}
-	return server{templates: templates, logger: logger}
+	return server{templates: templates, messages: messages, logger: logger}
 }
 
 func (s server) Render(ctx context.Context, request *pb.RenderRequest) (*pb.Rendered, error) {
@@ -59,15 +60,22 @@ func (s server) Render(ctx context.Context, request *pb.RenderRequest) (*pb.Rend
 		logger.Error("Failed during JSON parsing", zap.Error(err))
 		return nil, errInternal
 	}
-	var content bytes.Buffer
+
 	template, ok := s.templates[request.TemplateName]
 	if !ok {
 		logger.Error("Template not found")
 		return nil, errInternal
 	}
+	data["Messages"] = s.messages[asString(data["lang"])]
+	var content bytes.Buffer
 	if err = template.Execute(&content, data); err != nil {
 		logger.Error("Failed during indentlang template call", zap.Error(err))
 		return nil, errInternal
 	}
 	return &pb.Rendered{Content: content.Bytes()}, nil
+}
+
+func asString(value any) string {
+	s, _ := value.(string)
+	return s
 }

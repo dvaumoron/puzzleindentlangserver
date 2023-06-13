@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/dvaumoron/indentlang v1.5.2
 	github.com/dvaumoron/puzzlegrpcserver v1.4.1
+	github.com/dvaumoron/puzzlelocaleloader v1.0.0
 	github.com/dvaumoron/puzzletemplateservice v1.0.0
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.2.0
 	go.uber.org/zap v1.24.0
