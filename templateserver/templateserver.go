@@ -23,9 +23,12 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"time"
 
 	"github.com/dvaumoron/indentlang/adapter"
+	"github.com/dvaumoron/indentlang/builtins"
 	"github.com/dvaumoron/indentlang/template"
+	"github.com/dvaumoron/indentlang/types"
 	pb "github.com/dvaumoron/puzzletemplateservice"
 	"github.com/uptrace/opentelemetry-go-extra/otelzap"
 	"go.uber.org/zap"
@@ -43,7 +46,27 @@ type server struct {
 	logger    *otelzap.Logger
 }
 
-func New(templatesPath string, messages map[string]map[string]string, logger *otelzap.Logger) pb.TemplateServer {
+func New(templatesPath string, sourceFormat string, messages map[string]map[string]string, logger *otelzap.Logger) pb.TemplateServer {
+	builtins.Builtins.StoreStr("date", types.MakeNativeAppliable(func(env types.Environment, itArgs types.Iterator) types.Object {
+		arg0, _ := itArgs.Next()
+		value, ok := arg0.(types.String)
+		if !ok {
+			return value
+		}
+
+		arg1, _ := itArgs.Next()
+		targetFormat, ok := arg1.(types.String)
+		if !ok || sourceFormat == string(targetFormat) {
+			return value
+		}
+
+		date, err := time.Parse(sourceFormat, string(value))
+		if err != nil {
+			return value
+		}
+		return types.String(date.Format(string(targetFormat)))
+	}))
+
 	templates, err := adapter.LoadTemplates(templatesPath)
 	if err != nil {
 		logger.Fatal("Failed to load templates", zap.Error(err))
